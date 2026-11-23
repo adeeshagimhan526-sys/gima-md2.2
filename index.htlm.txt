@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CINEVERSE 🌍 | Your World of Movies & Anime</title>
+<meta name="description" content="CINEVERSE – Your World of Movies & Anime. Discover trending movies, latest Hollywood, Bollywood & South Indian films, popular anime, live entertainment updates and news.">
+<meta name="keywords" content="movies, anime, hollywood, bollywood, trending, trailers, CINEVERSE">
+<meta property="og:title" content="CINEVERSE 🌍 – Your World of Movies & Anime">
+<meta property="og:description" content="Discover trending movies, anime, trailers and live entertainment updates.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"CINEVERSE","url":"https://yourusername.github.io/cineverse/","description":"Your World of Movies & Anime"}
+</script>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ══════════ LOADING SCREEN ══════════ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo">CINE<span>VERSE</span><em>🌍</em></div>
+  <div class="loader-bar"><span></span></div>
+  <p class="loader-tag" data-i18n="tagline">YOUR WORLD OF MOVIES & ANIME</p>
+</div>
+
+<!-- ══════════ PARTICLES / BG FX ══════════ -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+  <div id="particles"></div>
+</div>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="navbar" id="navbar">
+  <a class="brand" href="#" data-view="home">CINE<span>VERSE</span> <em>🌍</em></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#" data-view="home" class="nav-link active" data-i18n="nav_home">Home</a>
+    <a href="#" data-view="movies" class="nav-link" data-i18n="nav_movies">Movies</a>
+    <a href="#" data-view="anime" class="nav-link" data-i18n="nav_anime">Anime</a>
+    <a href="#" data-view="trending" class="nav-link" data-i18n="nav_trending">Trending</a>
+    <a href="#" data-view="latest" class="nav-link" data-i18n="nav_latest">Latest</a>
+    <a href="#" data-view="live" class="nav-link" data-i18n="nav_live">🔴 Live Updates</a>
+    <a href="#" data-view="news" class="nav-link" data-i18n="nav_news">News</a>
+    <a href="#" data-view="about" class="nav-link" data-i18n="nav_about">About Us</a>
+    <a href="#" data-view="contact" class="nav-link" data-i18n="nav_contact">Contact Us</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="searchBtn" aria-label="Search">🔍</button>
+    <button class="icon-btn" id="favBtn" aria-label="Favorites">❤️<span class="fav-count" id="favCount">0</span></button>
+    <button class="icon-btn" id="langBtn" aria-label="Change Language">🌐<span id="langLabel">EN</span></button>
+    <button class="icon-btn" id="themeBtn" aria-label="Dark / Light Mode">🌙</button>
+    <button class="btn btn-sm btn-ghost" id="loginBtn" data-i18n="btn_login">Login</button>
+    <button class="btn btn-sm btn-primary" id="signupBtn" data-i18n="btn_signup">Sign Up</button>
+    <button class="icon-btn hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- Mobile slide menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="icon-btn close-menu" id="closeMenu" aria-label="Close">✖</button>
+  <a href="#" data-view="home" class="nav-link" data-i18n="nav_home">Home</a>
+  <a href="#" data-view="movies" class="nav-link" data-i18n="nav_movies">Movies</a>
+  <a href="#" data-view="anime" class="nav-link" data-i18n="nav_anime">Anime</a>
+  <a href="#" data-view="trending" class="nav-link" data-i18n="nav_trending">Trending</a>
+  <a href="#" data-view="latest" class="nav-link" data-i18n="nav_latest">Latest</a>
+  <a href="#" data-view="live" class="nav-link" data-i18n="nav_live">🔴 Live Updates</a>
+  <a href="#" data-view="news" class="nav-link" data-i18n="nav_news">News</a>
+  <a href="#" data-view="about" class="nav-link" data-i18n="nav_about">About Us</a>
+  <a href="#" data-view="contact" class="nav-link" data-i18n="nav_contact">Contact Us</a>
+  <div class="mobile-menu-btns">
+    <button class="btn btn-ghost" id="mLoginBtn" data-i18n="btn_login">Login</button>
+    <button class="btn btn-primary" id="mSignupBtn" data-i18n="btn_signup">Sign Up</button>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════ HOME ══════════ -->
+<section class="view active" id="view-home">
+  <!-- Hero slider -->
+  <div class="hero" id="hero">
+    <div class="hero-slides" id="heroSlides"></div>
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Previous">←</button>
+    <button class="hero-arrow next" id="heroNext" aria-label="Next">→</button>
+    <div class="hero-dots" id="heroDots"></div>
+  </div>
+
+  <!-- Quick explore buttons -->
+  <div class="quick-actions reveal">
+    <button class="btn btn-primary btn-glow" data-view="trending">🔥 <span data-i18n="qa_trending">Explore Trending</span></button>
+    <button class="btn btn-purple" data-view="movies">🎥 <span data-i18n="qa_movies">Explore Movies</span></button>
+    <button class="btn btn-purple" data-view="anime">🍥 <span data-i18n="qa_anime">Explore Anime</span></button>
+    <button class="btn btn-ghost" data-view="news">📰 <span data-i18n="qa_news">Latest News</span></button>
+    <button class="btn btn-ghost" data-view="live">🔴 <span data-i18n="qa_live">Live Updates</span></button>
+  </div>
+
+  <!-- Trending row -->
+  <section class="section reveal">
+    <div class="section-head">
+      <h2 class="section-title">🔥 <span data-i18n="sec_trending">Trending Now</span></h2>
+      <button class="btn btn-sm btn-ghost" data-view="trending" data-i18n="btn_viewall">View All →</button>
+    </div>
+    <div class="card-row" id="homeTrending"></div>
+  </section>
+
+  <!-- Movies row -->
+  <section class="section reveal">
+    <div class="section-head">
+      <h2 class="section-title">🎬 <span data-i18n="sec_movies">Latest Movies</span></h2>
+      <button class="btn btn-sm btn-ghost" data-view="movies" data-i18n="btn_viewall">View All →</button>
+    </div>
+    <div class="card-row" id="homeMovies"></div>
+  </section>
+
+  <!-- Anime row -->
+  <section class="section reveal">
+    <div class="section-head">
+      <h2 class="section-title">🍥 <span data-i18n="sec_anime">Popular Anime</span></h2>
+      <button class="btn btn-sm btn-ghost" data-view="anime" data-i18n="btn_viewall">View All →</button>
+    </div>
+    <div class="card-row" id="homeAnime"></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section reveal">
+    <div class="newsletter">
+      <h2>📬 <span data-i18n="news_title">Subscribe to the CINEVERSE Newsletter</span></h2>
+      <p data-i18n="news_sub">Get the latest movie & anime releases straight to your inbox.</p>
+      <form id="newsletterForm" novalidate>
+        <input type="email" id="newsEmail" data-i18n-ph="ph_email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn btn-primary btn-glow" data-i18n="btn_subscribe">Subscribe</button>
+      </form>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════ MOVIES ══════════ -->
+<section class="view" id="view-movies">
+  <div class="page-head reveal">
+    <h1>🎬 <span data-i18n="page_movies">Movies</span></h1>
+    <p data-i18n="page_movies_sub">Latest Hollywood, Bollywood & South Indian movies.</p>
+  </div>
+  <div class="filter-bar reveal">
+    <input type="search" id="movieSearch" data-i18n-ph="ph_search_movies" placeholder="Search movies…">
+    <select id="movieCat">
+      <option value="all" data-i18n="f_all_cats">All Categories</option>
+      <option value="hollywood" data-i18n="cat_hollywood">Hollywood</option>
+      <option value="bollywood" data-i18n="cat_bollywood">Bollywood</option>
+      <option value="south" data-i18n="cat_south">South Indian</option>
+    </select>
+    <select id="movieGenre"><option value="all" data-i18n="f_all_genres">All Genres</option></select>
+    <select id="movieYear"><option value="all" data-i18n="f_all_years">All Years</option></select>
+    <button class="btn btn-sm btn-ghost" id="movieReset" data-i18n="btn_reset">✖ Reset</button>
+  </div>
+  <div class="grid" id="movieGrid"></div>
+  <p class="empty-msg" id="movieEmpty" hidden data-i18n="no_results">😕 No results found. Try different filters.</p>
+</section>
+
+<!-- ══════════ ANIME ══════════ -->
+<section class="view" id="view-anime">
+  <div class="page-head reveal">
+    <h1>🍥 <span data-i18n="page_anime">Anime</span></h1>
+    <p data-i18n="page_anime_sub">Popular series, latest releases & top categories.</p>
+  </div>
+  <div class="chip-row reveal" id="animeChips"></div>
+  <div class="grid" id="animeGrid"></div>
+  <p class="empty-msg" id="animeEmpty" hidden data-i18n="no_results">😕 No results found. Try different filters.</p>
+</section>
+
+<!-- ══════════ TRENDING ══════════ -->
+<section class="view" id="view-trending">
+  <div class="page-head reveal">
+    <h1>🔥 <span data-i18n="page_trending">Trending</span></h1>
+    <p data-i18n="page_trending_sub">The hottest movies & anime right now.</p>
+  </div>
+  <div class="grid" id="trendingGrid"></div>
+</section>
+
+<!-- ══════════ LATEST ══════════ -->
+<section class="view" id="view-latest">
+  <div class="page-head reveal">
+    <h1>🆕 <span data-i18n="page_latest">Latest Releases</span></h1>
+    <p data-i18n="page_latest_sub">Fresh releases from movies & anime.</p>
+  </div>
+  <div class="grid" id="latestGrid"></div>
+</section>
+
+<!-- ══════════ LIVE ══════════ -->
+<section class="view" id="view-live">
+  <div class="page-head reveal">
+    <h1><span class="live-dot"></span> <span data-i18n="page_live">Live Updates</span></h1>
+    <p data-i18n="page_live_sub">Real-time entertainment headlines & announcements.</p>
+  </div>
+  <div class="live-feed reveal" id="liveFeed"></div>
+</section>
+
+<!-- ══════════ NEWS ══════════ -->
+<section class="view" id="view-news">
+  <div class="page-head reveal">
+    <h1>📰 <span data-i18n="page_news">Entertainment News</span></h1>
+    <p data-i18n="page_news_sub">Stories from the world of movies & anime.</p>
+  </div>
+  <div class="news-grid reveal" id="newsGrid"></div>
+</section>
+
+<!-- ══════════ FAVORITES ══════════ -->
+<section class="view" id="view-favorites">
+  <div class="page-head reveal">
+    <h1>❤️ <span data-i18n="page_favs">My Favorites</span></h1>
+    <p data-i18n="page_favs_sub">Movies & anime you saved.</p>
+  </div>
+  <div class="grid" id="favGrid"></div>
+  <p class="empty-msg" id="favEmpty" data-i18n="fav_empty">💔 No favorites yet. Tap ❤️ on any movie or anime!</p>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="view" id="view-about">
+  <div class="page-head reveal"><h1>🌍 <span data-i18n="page_about">About CINEVERSE</span></h1></div>
+  <div class="about-card reveal">
+    <h2>CINEVERSE <em>🌍</em></h2>
+    <p class="tagline" data-i18n="tagline">YOUR WORLD OF MOVIES & ANIME</p>
+    <p data-i18n="about_text">CINEVERSE is a premium entertainment discovery platform. Explore the latest Hollywood, Bollywood and South Indian movies, dive into the best anime series, follow live entertainment updates and stay ahead with trending news — all in one beautiful place. We only link to official, legal sources. No pirated content, ever.</p>
+    <div class="stats">
+      <div class="stat"><b id="statMovies">0</b><span data-i18n="st_movies">Movies</span></div>
+      <div class="stat"><b id="statAnime">0</b><span data-i18n="st_anime">Anime</span></div>
+      <div class="stat"><b id="statLangs">10</b><span data-i18n="st_langs">Languages</span></div>
+      <div class="stat"><b>24/7</b><span data-i18n="st_live">Live Updates</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="view" id="view-contact">
+  <div class="page-head reveal"><h1>📬 <span data-i18n="page_contact">Contact Us</span></h1></div>
+  <form class="contact-form reveal" id="contactForm" novalidate>
+    <input type="text" id="cName" data-i18n-ph="ph_name" placeholder="Your name" required>
+    <input type="email" id="cEmail" data-i18n-ph="ph_email" placeholder="Enter your email address" required>
+    <textarea id="cMsg" rows="5" data-i18n-ph="ph_msg" placeholder="Your message…" required></textarea>
+    <button type="submit" class="btn btn-primary btn-glow" data-i18n="btn_send">Send Message 🚀</button>
+  </form>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h3 class="brand">CINE<span>VERSE</span> <em>🌍</em></h3>
+      <p data-i18n="footer_tag">Your World of Movies & Anime.</p>
+    </div>
+    <div>
+      <h4 data-i18n="foot_browse">Browse</h4>
+      <a href="#" data-view="movies" data-i18n="nav_movies">Movies</a>
+      <a href="#" data-view="anime" data-i18n="nav_anime">Anime</a>
+      <a href="#" data-view="trending" data-i18n="nav_trending">Trending</a>
+      <a href="#" data-view="news" data-i18n="nav_news">News</a>
+    </div>
+    <div>
+      <h4 data-i18n="foot_company">Company</h4>
+      <a href="#" data-view="about" data-i18n="nav_about">About Us</a>
+      <a href="#" data-view="contact" data-i18n="nav_contact">Contact Us</a>
+      <a href="#" data-view="live" data-i18n="nav_live">🔴 Live Updates</a>
+    </div>
+    <div>
+      <h4 data-i18n="foot_legal">Legal</h4>
+      <p class="legal-note" data-i18n="foot_legal_text">All watch links point to official legal sources only. CINEVERSE does not host or link to pirated content.</p>
+    </div>
+  </div>
+  <p class="copyright">© 2026 CINEVERSE 🌍 · <span data-i18n="footer_made">Made with ❤️ for movie & anime fans.</span></p>
+</footer>
+
+<!-- ══════════ MODAL ══════════ -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="icon-btn modal-close" id="modalClose" aria-label="Close">✖</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ══════════ EXTRAS ══════════ -->
+<button id="backToTop" aria-label="Back to top">⬆</button>
+<div id="toastWrap" aria-live="polite"></div>
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <button class="icon-btn" id="searchClose" aria-label="Close">✖</button>
+    <input type="search" id="globalSearch" data-i18n-ph="ph_search_all" placeholder="Search movies & anime…" autofocus>
+    <div id="globalResults"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
